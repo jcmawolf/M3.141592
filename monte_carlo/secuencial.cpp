@@ -2,6 +2,7 @@
 #include <ctime>
 #include <stdlib.h>
 #include <climits>
+#include <cstdlib>
 
 using std::cout;
 using std::endl;
@@ -13,8 +14,9 @@ double randNumber(int seed){
 
 int main( int argc, char *argv[] ){
 
-    int num_iterations = 100;
-    int circle_points,square_points = 0;
+    int num_iterations = atoi(argv[1]);
+    int circle_points = 0;
+    int square_points = 0;
     double pi = -1.0;
 
     double x, y;
