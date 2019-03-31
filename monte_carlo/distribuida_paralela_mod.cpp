@@ -39,13 +39,14 @@ int main( int argc, char *argv[] ){
     // Envio
     MPI_Bcast(&num_iterations_by_node, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-    double ppi;
     if( world_rank != 0 ){
         /** 
          * Se evita que la primer semilla sea igual para ambos
          * puntos. Se espera que el número de iteraciones sea
          * menor al valor máximo de un entero.
          **/
+        circle_points = 0;
+        square_points = 0;
         x = randNumber(seed * INT_MAX + world_rank); //Desborde de variable intencional
         y = randNumber(seed * -INT_MAX  + world_rank); //Desborde de variable intencional
         for (int k = 1; k <= num_iterations_by_node; k++) {
@@ -58,17 +59,22 @@ int main( int argc, char *argv[] ){
             x = randNumber(seed - k + world_rank); // Desechados en la última iteración, permiten el ahorro de la 
             y = randNumber(seed + k + world_rank); // comprobación por iteración de si k == 0
         }
-        ppi = circle_points/(double) square_points;
-        cout << ppi << endl;
     }
 
-    double reciv_buff[3];
-    MPI_Gather(&ppi, 1, MPI_DOUBLE, reciv_buff, 3, MPI_INT, 0, MPI_COMM_WORLD);
-
+    int c_p[world_size];
+    int s_p[world_size];
+    MPI_Gather(&circle_points, 1, MPI_INT, c_p, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Gather(&square_points, 1, MPI_INT, s_p, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    
     if( world_rank == 0 ){
-        cout << reciv_buff[0] << " " << reciv_buff[1] << " " << reciv_buff[2] << endl;
-        pi =  4.0 * (  reciv_buff[0] +  reciv_buff[1] +  reciv_buff[2] );
-        cout << "Pi: Monte Carlo, distribuida/paralela( k=" << num_iterations << " ) => " <<  pi << endl;
+
+        for( int i = 0; i <= (world_size - 1); i++ ){
+            circle_points += c_p[ i ];
+            square_points += s_p[ i ];
+        }
+
+        pi =  4.0 * ( circle_points / (double) square_points );
+        cout << "Pi: Monte Carlo, distribuida/paralela mod( k=" << num_iterations << " => " << num_iterations_by_node << " ) => " <<  pi << endl;
     }
     MPI_Finalize();
 
