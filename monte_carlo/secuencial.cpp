@@ -1,6 +1,5 @@
 #include <iostream>
 #include <ctime>
-#include <stdlib.h>
 #include <climits>
 #include <cstdlib>
 
