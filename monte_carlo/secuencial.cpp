@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
-#include <stdlib.h> 
-#include <unistd.h> 
+#include <stdlib.h>
 #include <climits>
 
 using std::cout;
