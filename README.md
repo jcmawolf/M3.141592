@@ -2,5 +2,4 @@
 Implementacion de algoritmos para cálculo de π usando MPI 
 
 ## Presentado por:
-Jeison Cardona Gómez - 1325562-3743  
-Juan Felipe Orozco Escobar - 1426244-3743
+Jeison Cardona Gómez - 1325562-3743
