@@ -10,7 +10,7 @@ int main( int argc, char *argv[] ){
 
     int a = atoi(argv[1]); // Límite inferior
     int b = atoi(argv[2]); // Límite superior
-    // Función ∫(ln(x)x²)dx
+    // Integral ∫(ln(x)x²)dx
     int partitions = atoi(argv[3]); 
     double rectangle_base = (b-a)/(double)partitions;
     
