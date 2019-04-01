@@ -1,5 +1,5 @@
 # M3.141592
-Implementacion de algoritmos para cálculo de π e integrales usando MPI.
+Implementacion de algoritmos para la estimación de π e integrales usando MPI.
 
 ## Pruebas
 
