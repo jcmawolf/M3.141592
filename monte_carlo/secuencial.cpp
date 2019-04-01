@@ -19,7 +19,7 @@ int main( int argc, char *argv[] ){
     double pi = -1.0;
 
     double x, y;
-    int seed = time(NULL); //Cantidad de segundos desde 1970-01-01
+    int seed = time(NULL); // Cantidad de segundos desde 1970-01-01
     /** 
      * Se evita que la primer semilla sea igual para ambos
      * puntos. Se espera que el número de iteraciones sea
