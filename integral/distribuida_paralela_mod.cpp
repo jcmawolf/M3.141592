@@ -46,10 +46,8 @@ int main( int argc, char *argv[] ){
     
     double area = 0.0;
     if( world_rank != 0 ){
-        
         double partida =  data_to_send[0] + (((data_to_send[3] * world_rank) - data_to_send[3]) * data_to_send[4]);
         for(int i = 0; i < data_to_send[3]; i++){
-            //cout << data_to_send[0] << " " << data_to_send[1] << " " << data_to_send[2] << " " << data_to_send[3] << " " << data_to_send[4] << endl;
             double x_i =  (partida + (i * data_to_send[4]));
             area += data_to_send[4] * (log( x_i ) * pow( x_i , 2.0));
         }
