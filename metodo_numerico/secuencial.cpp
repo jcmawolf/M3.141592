@@ -133,11 +133,9 @@ int main( int argc, char *argv[] ){
         last_residue = r;
     }
 
-    cout << "Ite: " << iterations << " => [" 
-             << setprecision(5) << x_[0] << ", " 
-             << setprecision(5) << x_[1] << ", " 
-             << setprecision(5) << x_[2] << "]" << " R: " 
-             << setprecision(5) << last_residue << endl;
+    cout << "Método numérico: secuencial( k=" << iterations << "; ) => ";
+    cout << "["  << setprecision(5) << x_[0] << ", " << setprecision(5) << x_[1] << ", " << setprecision(5) << x_[2] << "]" << " R: " << setprecision(5) << last_residue << endl;
+    
 
     return 0;
 }
