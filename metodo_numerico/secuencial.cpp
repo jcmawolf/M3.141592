@@ -109,6 +109,11 @@ double* factorSolveLU( double matrix[3][3], double x[3] ){
 
 int main( int argc, char *argv[] ){
 
+    /**
+     * Código tomado y adaptado de un taller previo que presenté.
+     * https://github.com/vvbv/Taller-5-AMN
+     **/
+
     double matrix[3][3] = {{6,5,-5},{2,6,-2},{2,5,-1}};
     int iterations = atoi( argv[1] );
     double *x_= new double[3];
