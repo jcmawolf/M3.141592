@@ -73,7 +73,7 @@ int main( int argc, char *argv[] ){
         }
 
         pi =  4.0 * ( circle_points / (double) square_points );
-        cout << "Pi: Monte Carlo, distribuida/paralela mod( k=" << num_iterations << " => " << num_iterations_by_node << " ) => " <<  pi << endl;
+        cout << "Pi: Monte Carlo, distribuida/paralela mod( k=" << num_iterations << " => " << (num_iterations_by_node * (world_size - 1)) << " ) => " <<  pi << endl;
     }
     MPI_Finalize();
 
